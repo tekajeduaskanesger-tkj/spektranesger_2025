@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Absensi Piket Kelas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="home.html"><i class="bi bi-arrow-left"></i> Kembali ke Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-theme">
+              <span class="slider">
+                <i class="bi bi-moon moon"></i>
+                <i class="bi bi-sun sun"></i>
+              </span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-lg animate-fade-in">
+          <div class="card-header bg-info text-white">
+            <h1 class="card-title mb-0"><i class="bi bi-calendar-check"></i> Absensi Piket Kelas</h1>
+          </div>
+          <div class="card-body">
+            <form id="piket-form">
+              <div class="mb-3">
+                <label class="form-label">Nama Pelapor</label>
+                <input type="text" class="form-control" id="nama-piket" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Tanggal</label>
+                <input type="date" class="form-control" id="tanggal-piket" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Foto Bukti Piket</label>
+                <input type="file" class="form-control" id="foto-piket" accept="image/*" required>
+                <img id="preview-piket" class="img-fluid mt-2" style="max-width: 300px; display: none;">
+              </div>
+              <button type="submit" class="btn btn-info"><i class="bi bi-check2"></i> Absen Sekarang</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="toast" class="toast" role="alert">
+      <div class="toast-header">
+        <strong class="me-auto">Notifikasi</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+      </div>
+      <div class="toast-body" id="toast-message"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="piket.js"></script>
+</body>
+</html>

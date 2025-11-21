@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Laporan Fasilitas & Absensi Piket</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><i class="bi bi-house-door"></i> Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-theme">
+              <span class="slider">
+                <i class="bi bi-moon moon"></i>
+                <i class="bi bi-sun sun"></i>
+              </span>
+            </label>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="profile-link"><i class="bi bi-person"></i> Profil</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-danger" id="logout-btn"><i class="bi bi-box-arrow-right"></i> Keluar</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-lg animate-fade-in">
+          <div class="card-body text-center">
+            <h1 id="greeting" class="display-4 mb-3"></h1>
+            <h2 class="mb-3">Selamat Datang, <span id="user-name"></span>!</h2>
+            <p class="lead">Kelas : <span id="user-class"></span></p>
+            <p class="text-muted" id="current-time"></p>
+            <div class="row mt-4">
+              <div class="col-md-6">
+                <a href="piket.html" class="btn btn-info btn-lg w-100"><i class="bi bi-calendar-check"></i> Absensi Piket Kelas</a>
+              </div>
+              <div class="col-md-6">
+                <a href="laporan.html" class="btn btn-warning btn-lg w-100"><i class="bi bi-tools"></i> Laporan Fasilitas Rusak</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div class="modal fade" id="profileModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="bi bi-person"></i> Edit Profil</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">NISN</label>
+            <input type="text" class="form-control" id="profile-nisn" readonly>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control" id="profile-nama" readonly>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Kelas</label>
+            <input type="text" class="form-control" id="profile-kelas" readonly>
+          </div>
+          <form id="profile-form">
+            <div class="mb-3">
+              <label class="form-label">Password Baru</label>
+              <input type="password" class="form-control" id="profile-new-password" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Konfirmasi Password Baru</label>
+              <input type="password" class="form-control" id="profile-confirm-password" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nomor HP</label>
+              <input type="tel" class="form-control" id="profile-phone" placeholder="Masukkan nomor HP">
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="toast" class="toast" role="alert">
+      <div class="toast-header">
+        <strong class="me-auto">Notifikasi</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+      </div>
+      <div class="toast-body" id="toast-message"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="home.js"></script>
+</body>
+</html>

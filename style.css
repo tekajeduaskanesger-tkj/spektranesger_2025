@@ -1,0 +1,820 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color-light: #333;
+  --text-color-dark: #ffffff;
+  --bg-light: linear-gradient(135deg, #8e24ff 0%, #d988ff 100%);
+  --bg-dark: linear-gradient(135deg, #000000 0%, #7c00a9 100%);
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-light);
+  color: var(--text-color-light);
+  min-height: 100vh;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-color-dark);
+}
+
+/* Fix text colors in light and dark mode */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode label,
+body.dark-mode .lead {
+  color: #ffffff !important;
+}
+
+/* Light mode - ensure dark text by default */
+body:not(.dark-mode) h1,
+body:not(.dark-mode) h2,
+body:not(.dark-mode) h3,
+body:not(.dark-mode) h4,
+body:not(.dark-mode) h5,
+body:not(.dark-mode) h6,
+body:not(.dark-mode) p,
+body:not(.dark-mode) span:not(.badge),
+body:not(.dark-mode) label {
+  color: #333333;
+}
+
+body.dark-mode .text-muted {
+  color: #d1d5db !important;
+}
+
+body:not(.dark-mode) .text-muted {
+  color: #6c757d;
+}
+
+/* Clock color fix */
+#current-time {
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode #current-time {
+  color: #ffffff !important;
+}
+
+/* Greeting text fix */
+#greeting {
+  color: #333;
+}
+
+body.dark-mode #greeting {
+  color: #ffffff !important;
+}
+
+/* Password Eye Toggle */
+.password-toggle-container {
+  position: relative;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6c757d;
+  z-index: 10;
+}
+
+body.dark-mode .password-toggle-icon {
+  color: #adb5bd;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popUp {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+.animate-pop-up {
+  animation: popUp 0.5s ease-out;
+}
+
+/* Scroll Animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navbar */
+.navbar {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Cards */
+.card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff;
+  color: #333;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* Cards */
+.card {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.card-body {
+  color: #333333;
+}
+
+.card-title {
+  color: #333333;
+}
+
+.card-text {
+  color: #666666;
+}
+
+body.dark-mode .card {
+  background-color: #2d3748;
+  color: #ffffff;
+}
+
+body.dark-mode .card-body,
+body.dark-mode .card-title {
+  color: #ffffff;
+}
+
+body.dark-mode .card-text {
+  color: #d1d5db;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Forms - PERBAIKAN UTAMA UNTUK DARK MODE */
+.form-control, .form-select {
+  border-radius: 10px;
+  border: 2px solid #dee2e6;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #74008e;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* Dark mode form controls - ADMIN PAGE FIX */
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background-color: #1a202c;
+  color: #ffffff;
+  border-color: #4a5568;
+}
+
+body.dark-mode .form-control::placeholder {
+  color: #9ca3af;
+}
+
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus {
+  border-color: #667eea;
+  background-color: #2d3748;
+  color: #ffffff;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* Dropdown options dalam dark mode */
+body.dark-mode .form-select option {
+  background-color: #1a202c;
+  color: #ffffff;
+}
+
+body.dark-mode .form-label {
+  color: #ffffff !important;
+}
+
+/* Light mode form labels */
+body:not(.dark-mode) .form-label {
+  color: #333333 !important;
+}
+
+/* Modal form labels */
+body:not(.dark-mode) .modal-body .form-label {
+  color: #333333 !important;
+}
+
+body.dark-mode .modal-body .form-label {
+  color: #ffffff !important;
+}
+
+/* Readonly inputs - ADMIN PAGE FIX */
+.form-control[readonly] {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+  color: #495057;
+}
+
+body.dark-mode .form-control[readonly] {
+  background-color: #374151;
+  color: #ffffff;
+}
+
+/* Tables */
+.table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table th {
+  background-color: #667eea;
+  color: white;
+  border: none;
+  font-weight: 600;
+}
+
+/* Table body text - DEFAULT TO DARK for light mode */
+.table tbody {
+  color: #333333;
+}
+
+.table td {
+  border-color: #e1e5e9;
+  color: #333333;
+}
+
+/* Dark mode table styling */
+body.dark-mode .table {
+  color: #ffffff;
+}
+
+body.dark-mode .table tbody {
+  color: #ffffff;
+}
+
+body.dark-mode .table th {
+  background-color: #0a0f41;
+}
+
+body.dark-mode .table td {
+  border-color: #4a5568;
+  color: #ffffff;
+}
+
+/* Images */
+img {
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+/* Toast */
+.toast {
+  border-radius: 10px;
+}
+
+/* Modals in Dark Mode */
+body.dark-mode .modal-content {
+  background-color: #2d3748;
+  color: #ffffff;
+}
+
+body.dark-mode .modal-header {
+  border-bottom-color: #4a5568;
+}
+
+body.dark-mode .modal-title {
+  color: #ffffff !important;
+}
+
+body.dark-mode .modal-body {
+  color: #ffffff;
+}
+
+body.dark-mode .btn-close {
+  filter: invert(1);
+}
+
+/* Dark Mode Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #667eea;
+}
+
+input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+.slider .moon {
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 14px;
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+.slider .sun {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+input:checked + .slider .moon {
+  opacity: 0;
+}
+
+input:checked + .slider .sun {
+  opacity: 1;
+}
+
+/* Class List Checkboxes in Dark Mode */
+body.dark-mode .form-check-label {
+  color: #ffffff !important;
+}
+
+body.dark-mode .form-check-input {
+  background-color: #4a5568;
+  border-color: #718096;
+}
+
+body.dark-mode .form-check-input:checked {
+  background-color: #667eea;
+  border-color: #667eea;
+}
+
+/* Login Section in Dark Mode */
+body.dark-mode #login-section .card,
+body.dark-mode #admin-content .card {
+  background-color: #2d3748;
+  color: #ffffff;
+}
+
+body.dark-mode #login-section .card-header,
+body.dark-mode #admin-content .card-header {
+  color: #ffffff !important;
+}
+
+/* Button text visibility */
+body.dark-mode .btn-success,
+body.dark-mode .btn-warning,
+body.dark-mode .btn-info,
+body.dark-mode .btn-primary,
+body.dark-mode .btn-danger {
+  color: #ffffff !important;
+}
+
+/* Ensure all text in cards is visible */
+body.dark-mode .card p,
+body.dark-mode .card span,
+body.dark-mode .card label,
+body.dark-mode .card h1,
+body.dark-mode .card h2,
+body.dark-mode .card h3,
+body.dark-mode .card h4,
+body.dark-mode .card h5,
+body.dark-mode .card h6 {
+  color: #ffffff !important;
+}
+
+/* Light mode - ensure dark text in cards */
+body:not(.dark-mode) .card p,
+body:not(.dark-mode) .card span:not(.badge),
+body:not(.dark-mode) .card label,
+body:not(.dark-mode) .card h1,
+body:not(.dark-mode) .card h2,
+body:not(.dark-mode) .card h3,
+body:not(.dark-mode) .card h4,
+body:not(.dark-mode) .card h5,
+body:not(.dark-mode) .card h6 {
+  color: #333333 !important;
+}
+
+/* Table responsive container */
+body.dark-mode .table-responsive {
+  background-color: #2d3748;
+}
+
+/* Ensure thead text is always visible */
+body.dark-mode thead {
+  color: #ffffff !important;
+}
+
+body.dark-mode thead th {
+  color: #ffffff !important;
+}
+
+/* Card statistics specific */
+body.dark-mode .text-center .card-title {
+  color: #ffffff !important;
+}
+
+body.dark-mode .text-center .card-text {
+  color: #d1d5db !important;
+}
+
+body.dark-mode .text-center h3 {
+  color: #ffffff !important;
+}
+
+/* Light mode statistics cards */
+body:not(.dark-mode) .text-center .card-title {
+  color: #333333;
+}
+
+body:not(.dark-mode) .text-center .card-text {
+  color: #666666;
+}
+
+body:not(.dark-mode) .text-center h3 {
+  color: #333333;
+}
+
+/* Icon colors in dark mode */
+body.dark-mode .bi {
+  color: inherit;
+}
+
+body.dark-mode .text-warning {
+  color: #fbbf24 !important;
+}
+
+body.dark-mode .text-success {
+  color: #10b981 !important;
+}
+
+body.dark-mode .text-secondary {
+  color: #9ca3af !important;
+}
+
+body.dark-mode .text-info {
+  color: #3b82f6 !important;
+}
+
+body.dark-mode .text-primary {
+  color: #8b5cf6 !important;
+}
+
+body.dark-mode .text-danger {
+  color: #ef4444 !important;
+}
+
+/* File input styling - ADMIN PAGE FIX */
+body.dark-mode input[type="file"] {
+  color: #ffffff;
+  background-color: #1a202c;
+}
+
+body.dark-mode input[type="file"]::file-selector-button {
+  background-color: #667eea;
+  color: #ffffff;
+  border: 1px solid #667eea;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+body.dark-mode input[type="file"]::file-selector-button:hover {
+  background-color: #5a67d8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a67d8;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+  background: #1a202c;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #4a5568;
+}
+
+/* Chart Size Adjustment */
+#fasilitas-chart {
+  height: 250px !important;
+}
+
+/* Admin Page Specific Styles */
+body.dark-mode .card-header {
+  color: #ffffff !important;
+}
+
+body.dark-mode .card-header.bg-primary,
+body.dark-mode .card-header.bg-warning,
+body.dark-mode .card-header.bg-info,
+body.dark-mode .card-header.bg-dark {
+  color: #ffffff !important;
+}
+
+body.dark-mode .card-header.bg-warning.text-dark {
+  color: #000000 !important;
+}
+
+/* Light mode card headers - use appropriate contrasting colors */
+body:not(.dark-mode) .card-header.bg-primary,
+body:not(.dark-mode) .card-header.bg-info,
+body:not(.dark-mode) .card-header.bg-dark {
+  color: #ffffff !important;
+}
+
+body:not(.dark-mode) .card-header.bg-warning {
+  color: #000000 !important;
+}
+
+body:not(.dark-mode) .card-header.bg-warning.text-dark {
+  color: #000000 !important;
+}
+
+/* Statistics Cards */
+body.dark-mode .card-text {
+  color: #d1d5db !important;
+}
+
+body.dark-mode .text-center h3,
+body.dark-mode .text-center h5 {
+  color: #ffffff !important;
+}
+
+/* Table Styling for Dark Mode */
+body.dark-mode .table-striped tbody tr {
+  background-color: #374151;
+  color: #ffffff;
+}
+
+body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+  background-color: #2d3748;
+  color: #ffffff;
+}
+
+body.dark-mode .table-hover tbody tr:hover {
+  background-color: #4a5568;
+  color: #ffffff;
+}
+
+/* Light mode table styling - ensure dark text */
+.table-striped tbody tr {
+  color: #333333;
+}
+
+.table-striped tbody tr td {
+  color: #333333;
+}
+
+.table tbody tr td {
+  color: #333333;
+}
+
+/* Override any white text in light mode tables */
+body:not(.dark-mode) .table tbody tr,
+body:not(.dark-mode) .table tbody tr td {
+  color: #333333 !important;
+}
+
+/* Badge colors in dark mode */
+body.dark-mode .badge {
+  color: #ffffff !important;
+}
+
+/* Search and Filter inputs - ADMIN PAGE FIX */
+body.dark-mode input[type="text"],
+body.dark-mode input[type="date"],
+body.dark-mode input[type="tel"],
+body.dark-mode input[type="password"],
+body.dark-mode textarea {
+  background-color: #1a202c;
+  color: #ffffff;
+  border-color: #4a5568;
+}
+
+body.dark-mode input[type="text"]::placeholder,
+body.dark-mode input[type="date"]::placeholder,
+body.dark-mode input[type="tel"]::placeholder,
+body.dark-mode input[type="password"]::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #0d0e10;
+}
+
+/* Textarea dalam dark mode */
+body.dark-mode textarea {
+  background-color: #1a202c;
+  color: #ffffff;
+}
+
+/* Dropdown select in dark mode */
+body.dark-mode select option {
+  background-color: #1a202c;
+  color: #ffffff;
+}
+
+/* SweetAlert2 Toast Fix untuk Dark Mode */
+body.dark-mode .swal2-popup {
+  background-color: #2d3748 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .swal2-title {
+  color: #ffffff !important;
+}
+
+body.dark-mode .swal2-html-container {
+  color: #ffffff !important;
+}
+
+body.dark-mode .swal2-confirm,
+body.dark-mode .swal2-cancel {
+  color: #ffffff !important;
+}
+
+.copyright-footer {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+.copyright-footer i {
+  margin-right: 5px;
+}
+
+.logo-banner {
+  background: linear-gradient(135deg, #000000 0%, #c300ff 100%);
+  padding: 30px 0;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.logo-banner-content {
+  position: relative;
+  z-index: 1;
+}
+
+.school-name {
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.school-tagline {
+  color: rgba(255,255,255,0.9);
+  font-size: 16px;
+  margin: 0;
+}
